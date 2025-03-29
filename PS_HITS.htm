@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayStation Top Hits</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding-top: 90px;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ff4757;
+        }
+        .section {
+            padding: 60px 20px 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .game-list {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 10px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #ff4757 #1a1a1a;
+        }
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            scroll-snap-align: center;
+            min-width: 200px;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 71, 87, 0.8);
+        }
+        footer {
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PlayStation Highlights</h1>
+        <nav>
+            <ul>
+                <li><a href="#top-hits">Top Hits</a></li>
+                <li><a href="#coming-soon">Coming Soon</a></li>
+                <li><a href="#honourable-mentions">Honourable Mentions</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="top-hits" class="section">
+        <h2>Top Hits</h2>
+        <div class="game-list">
+            <div class="game-card">God of War Ragnarök</div>
+            <div class="game-card">Marvel's Spider-Man 2</div>
+            <div class="game-card">The Last of Us Part II</div>
+            <div class="game-card">Gran Turismo 7</div>
+            <div class="game-card">Demon's Souls</div>
+            <div class="game-card">Resident Evil 4 Remake</div>
+            <div class="game-card">Elden Ring</div>
+        </div>
+    </section>
+    
+    <section id="coming-soon" class="section">
+        <h2>Coming Soon</h2>
+        <div class="game-list">
+            <div class="game-card">Silent Hill 2 Remake</div>
+            <div class="game-card">Final Fantasy VII Rebirth</div>
+            <div class="game-card">GTA VI</div>
+            <div class="game-card">Tekken 8</div>
+            <div class="game-card">Dragon's Dogma 2</div>
+            <div class="game-card">Marvel's Wolverine</div>
+            <div class="game-card">Star Wars: Outlaws</div>
+        </div>
+    </section>
+    
+    <section id="honourable-mentions" class="section">
+        <h2>Honourable Mentions</h2>
+        <div class="game-list">
+            <div class="game-card">Ghost of Tsushima</div>
+            <div class="game-card">Horizon Forbidden West</div>
+            <div class="game-card">Bloodborne</div>
+            <div class="game-card">Ratchet & Clank: Rift Apart</div>
+            <div class="game-card">Death Stranding</div>
+            <div class="game-card">Persona 5 Royal</div>
+            <div class="game-card">Returnal</div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 PlayStation Fansite</p>
+    </footer>
+    
+    <script>
+        document.addEventListener("scroll", () => {
+            document.querySelectorAll(".section").forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.75) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
